@@ -1,21 +1,24 @@
 #!/usr/bin/env bash
 
-# quick info queries
-os_version="$(cat /etc/os-release | cut -d\" -f2 | head -1)" # os version
-kernel_version="$(uname -r)" # kernel version
+# sources
+source ./sources/displays.sh
+source ./sources/quick_queries.sh
 
 
-# find out the Boot Manager
-# boot_version_current="$(cat e)"
+# ANSI escape colour codes
+blue="\u001b[36m"
+reset_colour="\u001b[0m"
+
 
 
 
 
 # Output
-echo ""
-echo "$USER@$HOSTNAME"
-echo "------------------"
-echo "OS: $os_version"
-echo "Kernel: $kernel_version"
-echo ""
-echo ""
+printf "\n"
+printf "${blue}$USER${reset_colour}@${blue}$HOSTNAME${reset_colour}\n"
+printf -- "------------------\n"
+printf "${blue}OS:${reset_colour} $os_version\n"
+printf "${blue}Kernel:${reset_colour} $kernel_version\n"
+printf "${blue}Bootloader:${reset_colour} $boot_manager\n"
+printf "\n"
+printf "\n"
