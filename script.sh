@@ -20,5 +20,14 @@ printf -- "------------------\n"
 printf "${blue}OS:${reset_colour} $os_version\n"
 printf "${blue}Kernel:${reset_colour} $kernel_version\n"
 printf "${blue}Bootloader:${reset_colour} $boot_manager\n"
+
+for i in "${!monitor_names[@]}"
+do
+monitor_current_name="${monitor_names[$i]}"
+monitor_current_resolution="${monitor_resolutions[$i]}"
+
+printf "${blue}Display (%s):${reset_colour} %s\n" "$monitor_current_name" "$monitor_current_resolution"
+done
+
 printf "\n"
 printf "\n"

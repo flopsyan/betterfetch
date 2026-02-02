@@ -8,5 +8,8 @@ WIP - not usable yet
 
 2. **Make it executable**
 
-3. **Run the script**  
+3. Install the dependencies
+   Betterfetch requires the tool edid-decode (part of the package "v4l-utils")
+
+4. **Run the script**  
    Run the script.
