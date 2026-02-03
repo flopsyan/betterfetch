@@ -23,11 +23,13 @@ printf "${blue}Bootloader:${reset_colour} $boot_manager\n"
 
 for i in "${!monitor_names[@]}"
 do
-monitor_current_name="${monitor_names[$i]}"
-monitor_current_resolution="${monitor_resolutions[$i]}"
+    monitor_current_name="${monitor_names[$i]}"
+    monitor_current_resolution="${monitor_resolutions[$i]}"
 
-printf "${blue}Display (%s):${reset_colour} %s\n" "$monitor_current_name" "$monitor_current_resolution"
+    printf "${blue}Display (%s):${reset_colour} %s\n" "$monitor_current_name" "$monitor_current_resolution"
 done
 
+printf "${blue}CPU:${reset_colour} ${cpu_model} (${cpu_amount}) @ ${cpu_speed_ghz} (${cpu_usage} %%)\n"
+printf "${blue}GPU:${reset_colour} ${gpu_manufacturer} ${gpu_model}"
 printf "\n"
 printf "\n"
