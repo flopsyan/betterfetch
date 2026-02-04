@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # sources
+source ./sources/disks.sh
 source ./sources/displays.sh
 source ./sources/memory.sh
 source ./sources/quick_queries.sh
@@ -41,6 +42,13 @@ else
     printf "${blue}Swap:${reset_colour} Disabled\n"
 fi
 
+printf "${blue}Disk (/):${reset_colour} ${disk_root_used_gib} GiB / ${disk_root_total_gib} GiB ($disk_root_usage %%)\n"
 
+if [[ $disk_home_total -ne 0 ]]
+then
+    printf "${blue}Disk (/home):${reset_colour} ${disk_home_used_gib} GiB / ${disk_home_total_gib} GiB ($disk_home_usage %%)\n"
+fi
+
+printf "\n"
 printf "\n"
 printf "\n"
