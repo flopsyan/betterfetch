@@ -5,6 +5,7 @@ source ./sources/disks.sh
 source ./sources/displays.sh
 source ./sources/memory.sh
 source ./sources/quick_queries.sh
+source ./sources/uptime.sh
 
 
 # ANSI escape colour codes
@@ -48,6 +49,9 @@ if [[ $disk_home_total -ne 0 ]]
 then
     printf "${blue}Disk (/home):${reset_colour} ${disk_home_used_gib} GiB / ${disk_home_total_gib} GiB ($disk_home_usage %%)\n"
 fi
+
+printf "\n"
+printf "${blue}Uptime:${reset_colour} ${uptime_output}\n"
 
 printf "\n"
 printf "\n"
