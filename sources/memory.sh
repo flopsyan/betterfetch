@@ -42,3 +42,12 @@ then
     # Memory usage in percent
     swap_usage="$(awk "BEGIN {printf \"%.2f\", $swap_used / $swap_total * 100}")"
 fi
+
+
+# Show swap calculations only if Swap is enabled
+if [[ $swap_total -ne 0 ]]
+then
+    swap_output="${swap_used_gib} Gib / ${swap_total_gib} GiB (${swap_usage} %%)\n"
+else
+    swap_output="Disabled\n"
+fi

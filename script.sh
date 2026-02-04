@@ -35,14 +35,7 @@ done
 printf "${blue}CPU:${reset_colour} ${cpu_model} (${cpu_amount}) @ ${cpu_speed_ghz} (${cpu_usage} %%)\n"
 printf "${blue}GPU:${reset_colour} ${gpu_manufacturer} ${gpu_model}\n"
 printf "${blue}Memory:${reset_colour} ${mem_used_gib} GiB / ${mem_total_gib} GiB (${mem_usage} %%)\n"
-
-if [[ $swap_total -ne 0 ]]
-then
-    printf "${blue}Swap:${reset_colour} ${swap_used_gib} Gib / ${swap_total_gib} GiB (${swap_usage} %%)\n"
-else
-    printf "${blue}Swap:${reset_colour} Disabled\n"
-fi
-
+printf "${blue}Swap:${reset_colour} ${swap_output}"
 printf "${blue}Disk (/):${reset_colour} ${disk_root_used_gib} GiB / ${disk_root_total_gib} GiB ($disk_root_usage %%)\n"
 
 if [[ $disk_home_total -ne 0 ]]

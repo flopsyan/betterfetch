@@ -24,7 +24,7 @@ uptime_seconds="$((uptime_proc_sec % 60))"
 if [ $uptime_days -ne 0 ]
 then
     uptime_output="$uptime_days days, $uptime_hours hours, $uptime_minutes minutes, $uptime_seconds seconds."
-elif [ $uptime_hours -ne 0]
+elif [ $uptime_hours -ne 0 ]
 then
     uptime_output="$uptime_hours hours, $uptime_minutes minutes, $uptime_seconds"
 elif [ $uptime_minutes -ne 0 ]
