@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-# ANSI escape colour codes
+### ANSI escape colour codes
 blue="\u001b[36m"
 reset_colour="\u001b[0m"
 
-# sources
+### Sources
 source ./sources/disks.sh
 source ./sources/displays.sh
 source ./sources/memory.sh
@@ -16,7 +16,7 @@ source ./sources/uptime.sh
 
 
 
-# Output
+### Output
 printf "\n"
 printf "${blue}$USER${reset_colour}@${blue}$HOSTNAME${reset_colour}\n"
 printf -- "------------------\n"
@@ -24,6 +24,7 @@ printf "${blue}OS:${reset_colour} $os_version\n"
 printf "${blue}Kernel:${reset_colour} $kernel_version\n"
 printf "${blue}Bootloader:${reset_colour} $boot_manager\n"
 
+# Display output for all active monitors
 for i in "${!monitor_names[@]}"
 do
     monitor_current_name="${monitor_names[$i]}"
@@ -43,6 +44,7 @@ printf "\n"
 
 printf "${blue}Uptime:${reset_colour} ${uptime_output}\n"
 printf "${blue}Packages:${reset_colour} ${packages_pacman} (pacman)${packages_flatpak_output}\n"
+printf "${blue}Shell:${reset_colour} ${shell}\n"
 
 printf "\n"
 printf "\n"

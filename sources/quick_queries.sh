@@ -24,3 +24,7 @@ cpu_usage="$(cat <(grep 'cpu ' /proc/stat) <(sleep 1 && grep 'cpu ' /proc/stat) 
 # GPU
 gpu_manufacturer="$(lspci | grep -iE "VGA|3D|Video" | cut -d':' -f3 | cut -d'[' -f1 | xargs)"
 gpu_model="$(lspci | grep -iE "VGA|3D|Video" | cut -d'[' -f3 | cut -d']' -f1)"
+
+
+# Current Shell
+shell="$(sh -c 'ps -p $$ -o ppid=' | xargs ps -o comm= -p)"
