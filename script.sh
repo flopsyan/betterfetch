@@ -45,6 +45,7 @@ fi
 
 printf "\n"
 printf "${blue}Uptime:${reset_colour} ${uptime_output}\n"
+printf "${blue}Packages:${reset_colour} ${packages_pacman} (pacman), ${packages_flatpak} (flatpak)\n"
 
 printf "\n"
 printf "\n"
