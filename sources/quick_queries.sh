@@ -24,8 +24,3 @@ cpu_usage="$(cat <(grep 'cpu ' /proc/stat) <(sleep 1 && grep 'cpu ' /proc/stat) 
 # GPU
 gpu_manufacturer="$(lspci | grep -iE "VGA|3D|Video" | cut -d':' -f3 | cut -d'[' -f1 | xargs)"
 gpu_model="$(lspci | grep -iE "VGA|3D|Video" | cut -d'[' -f3 | cut -d']' -f1)"
-
-
-# Packages
-packages_pacman="$(pacman -Q | wc -l)"
-packages_flatpak="$(flatpak list | wc -l)" # flatpak automatically removes headlines on pipes

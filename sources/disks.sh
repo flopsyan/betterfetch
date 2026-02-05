@@ -35,3 +35,12 @@ disk_home_available="$(df | grep '/home' | xargs | cut -d' ' -f4)"
 
 # Usage in percent
 disk_home_usage="$(awk "BEGIN {printf \"%.2f\", $disk_home_used / $disk_home_total * 100}")"
+
+
+# Check if home disk exists - if not, don't output anything
+if [[ $disk_home_total -ne 0 ]] 2>/dev/null
+then
+    disk_home_output="${blue}Disk (/home):${reset_colour} ${disk_home_used_gib} GiB / ${disk_home_total_gib} GiB ($disk_home_usage %%)\n"
+else
+    disk_home_output=""
+fi
