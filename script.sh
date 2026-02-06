@@ -11,6 +11,7 @@ source ./sources/memory.sh
 source ./sources/packages.sh
 source ./sources/quick_queries.sh
 source ./sources/uptime.sh
+source ./sources/window_manager.sh
 
 
 
@@ -45,6 +46,7 @@ printf "\n"
 printf "${blue}Uptime:${reset_colour} ${uptime_output}\n"
 printf "${blue}Packages:${reset_colour} ${packages_pacman} (pacman)${packages_flatpak_output}\n"
 printf "${blue}Shell:${reset_colour} ${shell}\n"
+printf "${blue}Window Manager:${reset_colour} ${wm_output}\n"
 
 printf "\n"
 printf "\n"
