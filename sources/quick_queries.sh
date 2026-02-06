@@ -28,3 +28,8 @@ gpu_model="$(lspci | grep -iE "VGA|3D|Video" | cut -d'[' -f3 | cut -d']' -f1)"
 
 # Current Shell
 shell="$(sh -c 'ps -p $$ -o ppid=' | xargs ps -o comm= -p)"
+
+
+# IP Address
+ip_local="$(ip addr show scope global | awk '$1 ~ /^inet/ {print $2}')"
+ip_public="$(curl https://ipinfo.io/ip 2>/dev/null)"

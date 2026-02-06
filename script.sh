@@ -49,5 +49,10 @@ printf "${blue}Shell:${reset_colour} ${shell}\n"
 printf "${blue}Window Manager:${reset_colour} ${wm_output}\n"
 
 printf "\n"
+
+printf "${blue}Local IP:${reset_colour} ${ip_local}\n"
+printf "${blue}Public IP:${reset_colour} ${ip_public}\n"
+
+printf "\n"
 printf "\n"
 printf "\n"
