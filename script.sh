@@ -7,6 +7,7 @@ reset_colour="\u001b[0m"
 ### Sources
 source ./sources/disks.sh
 source ./sources/displays.sh
+source ./sources/locale.sh
 source ./sources/memory.sh
 source ./sources/packages.sh
 source ./sources/quick_queries.sh
@@ -18,7 +19,6 @@ source ./sources/window_manager.sh
 
 
 ### Output
-printf "\n"
 printf "${blue}$USER${reset_colour}@${blue}$HOSTNAME${reset_colour}\n"
 printf -- "------------------\n"
 printf "${blue}OS:${reset_colour} $os_version\n"
@@ -47,12 +47,9 @@ printf "${blue}Uptime:${reset_colour} ${uptime_output}\n"
 printf "${blue}Packages:${reset_colour} ${packages_pacman} (pacman)${packages_flatpak_output}\n"
 printf "${blue}Shell:${reset_colour} ${shell}\n"
 printf "${blue}Window Manager:${reset_colour} ${wm_output}\n"
+printf "${blue}Locale:${reset_colour} ${locale_output}\n"
 
 printf "\n"
 
 printf "${blue}Local IP:${reset_colour} ${ip_local}\n"
 printf "${blue}Public IP:${reset_colour} ${ip_public}\n"
-
-printf "\n"
-printf "\n"
-printf "\n"
