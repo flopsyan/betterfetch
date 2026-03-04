@@ -40,7 +40,7 @@ disk_home_usage="$(awk "BEGIN {printf \"%.2f\", $disk_home_used / $disk_home_tot
 # Check if home disk exists - if not, don't output anything
 if [[ $disk_home_total -ne 0 ]] 2>/dev/null
 then
-    disk_home_output="${blue}Disk (/home):${reset_colour} ${disk_home_used_gib} GiB / ${disk_home_total_gib} GiB ($disk_home_usage %%)\n"
+    disk_home_output="${blue}Disk (/home):${reset_colour} ${disk_home_used_gib} GiB / ${disk_home_total_gib} GiB ($disk_home_usage %)\n"
 else
     disk_home_output=""
 fi
