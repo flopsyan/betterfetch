@@ -14,16 +14,41 @@ source ./sources/quick_queries.sh
 source ./sources/uptime.sh
 source ./sources/window_manager.sh
 
+### Logo
+arch_logo=(
+    '                  -`'
+    '                 .o+`'
+    '                `ooo/'
+    '               `+oooo:'
+    '              `+oooooo:'
+    '              -+oooooo+:'
+    '            `/:-:++oooo+:'
+    '           `/++++/+++++++:'
+    '          `/++++++++++++++:'
+    '         `/+++ooooooooooooo/`'
+    '        ./ooosssso++osssssso+`'
+    '       .oossssso-````/ossssss+`'
+    '      -osssssso.      :ssssssso.'
+    '     :osssssss/        osssso+++.'
+    '    /ossssssss/        +ssssooo/-'
+    '  `/ossssso+/:-        -:/+osssso+-'
+    ' `+sso+:-`                `.-/+oso:'
+    '`++:.                           `-/+/'
+    '.`                                 `/'
+)
 
 
 
 
-### Output
-printf "${blue}$USER${reset_colour}@${blue}$HOSTNAME${reset_colour}\n"
-printf -- "------------------\n"
-printf "${blue}OS:${reset_colour} $os_version\n"
-printf "${blue}Kernel:${reset_colour} $kernel_version\n"
-printf "${blue}Bootloader:${reset_colour} $boot_manager\n"
+
+### Output information
+output=()
+
+output+=("${blue}$USER${reset_colour}@${blue}$HOSTNAME${reset_colour}")
+output+=("------------------")
+output+=("${blue}OS:${reset_colour} $os_version")
+output+=("${blue}Kernel:${reset_colour} $kernel_version")
+output+=("${blue}Bootloader:${reset_colour} $boot_manager")
 
 # Display output for all active monitors
 for i in "${!monitor_names[@]}"
@@ -31,25 +56,56 @@ do
     monitor_current_name="${monitor_names[$i]}"
     monitor_current_resolution="${monitor_resolutions[$i]}"
 
-    printf "${blue}Display (%s):${reset_colour} %s\n" "$monitor_current_name" "$monitor_current_resolution"
+    output+=("${blue}Display (${monitor_current_name}):${reset_colour} ${monitor_current_resolution}")
 done
 
-printf "${blue}CPU:${reset_colour} ${cpu_model} (${cpu_amount}) @ ${cpu_speed_ghz} (${cpu_usage} %%)\n"
-printf "${blue}GPU:${reset_colour} ${gpu_manufacturer} ${gpu_model}\n"
-printf "${blue}Memory:${reset_colour} ${mem_used_gib} GiB / ${mem_total_gib} GiB (${mem_usage} %%)\n"
-printf "${blue}Swap:${reset_colour} ${swap_output}"
-printf "${blue}Disk (/):${reset_colour} ${disk_root_used_gib} GiB / ${disk_root_total_gib} GiB ($disk_root_usage %%)\n"
-printf "$disk_home_output"
+output+=("${blue}CPU:${reset_colour} ${cpu_model} (${cpu_amount}) @ ${cpu_speed_ghz} (${cpu_usage} %%)")
+output+=("${blue}GPU:${reset_colour} ${gpu_manufacturer} ${gpu_model}")
+output+=("${blue}Memory:${reset_colour} ${mem_used_gib} GiB / ${mem_total_gib} GiB (${mem_usage} %%)")
+output+=("${blue}Swap:${reset_colour} ${swap_output}")
+output+=("${blue}Disk (/):${reset_colour} ${disk_root_used_gib} GiB / ${disk_root_total_gib} GiB ($disk_root_usage %%)")
 
-printf "\n"
+if [[ -n "$disk_home_output" ]]
+then
+    output+=("$disk_home_output")
+fi
 
-printf "${blue}Uptime:${reset_colour} ${uptime_output}\n"
-printf "${blue}Packages:${reset_colour} ${packages_pacman} (pacman)${packages_flatpak_output}\n"
-printf "${blue}Shell:${reset_colour} ${shell}\n"
-printf "${blue}Window Manager:${reset_colour} ${wm_output}\n"
-printf "${blue}Locale:${reset_colour} ${locale_output}\n"
+output+=("")
 
-printf "\n"
+output+=("${blue}Uptime:${reset_colour} ${uptime_output}")
+output+=("${blue}Packages:${reset_colour} ${packages_pacman} (pacman)${packages_flatpak_output}")
+output+=("${blue}Shell:${reset_colour} ${shell}")
+output+=("${blue}Window Manager:${reset_colour} ${wm_output}")
+output+=("${blue}Locale:${reset_colour} ${locale_output}")
 
-printf "${blue}Local IP:${reset_colour} ${ip_local}\n"
-printf "${blue}Public IP:${reset_colour} ${ip_public}\n"
+output+=("")
+
+output+=("${blue}Local IP:${reset_colour} ${ip_local}")
+output+=("${blue}Public IP:${reset_colour} ${ip_public}")
+
+
+
+
+
+### Final Output
+max_lines=${#arch_logo[@]}
+if [[ ${#output[@]} -gt $max_lines ]]; then
+    max_lines=${#output[@]}
+fi
+
+
+for ((i=0; i<max_lines; i++)); do
+    # output arch logo
+    if [[ $i -lt ${#arch_logo[@]} ]]; then
+        printf "${blue}%-38s${reset_colour}  " "${arch_logo[$i]}"
+    else
+        printf "%-38s  " "" 
+    fi
+
+    # output system info
+    if [[ $i -lt ${#output[@]} ]]; then
+        printf "%b\n" "${output[$i]}"
+    else
+        printf "\n"
+    fi
+done
