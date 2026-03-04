@@ -1,3 +1,7 @@
-An alternative to fastfetch and neofetch.
+# Betterfetch
+An alternative to fastfetch and neofetch that only prints important information.
 
-Still a work in progress, not usable yet.
+
+## Installation
+1. Download the script and move it to a folder of your choice
+2. Run the script
