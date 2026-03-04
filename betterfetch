@@ -88,6 +88,13 @@ output+=("${blue}Public IP:${reset_colour} ${ip_public}")
 
 
 ### Final Output
+# Remove unnecessary Line Breaks
+for i in "${!output[@]}"; do
+    output[$i]="${output[$i]//\\n/}"
+    output[$i]="${output[$i]//$'\n'/}"
+done
+
+
 max_lines=${#arch_logo[@]}
 if [[ ${#output[@]} -gt $max_lines ]]; then
     max_lines=${#output[@]}
