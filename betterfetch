@@ -95,22 +95,28 @@ for i in "${!output[@]}"; do
 done
 
 
-max_lines=${#arch_logo[@]}
-if [[ ${#output[@]} -gt $max_lines ]]; then
-    max_lines=${#output[@]}
+# Calculate max height to prevent cutting of info and/or logo
+logo_max_lines=${#arch_logo[@]}
+
+if [[ ${#output[@]} -gt $logo_max_lines ]]
+then
+    logo_max_lines=${#output[@]}
 fi
 
 
-for ((i=0; i<max_lines; i++)); do
-    # output arch logo
-    if [[ $i -lt ${#arch_logo[@]} ]]; then
+# Render output
+for ((i=0; i<logo_max_lines; i++)); do
+
+    if [[ $i -lt ${#arch_logo[@]} ]]
+    then
         printf "${blue}%-38s${reset_colour}  " "${arch_logo[$i]}"
     else
         printf "%-38s  " "" 
     fi
 
-    # output system info
-    if [[ $i -lt ${#output[@]} ]]; then
+
+    if [[ $i -lt ${#output[@]} ]]
+    then
         printf "%b\n" "${output[$i]}"
     else
         printf "\n"
