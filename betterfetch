@@ -5,14 +5,15 @@ blue="\u001b[36m"
 reset_colour="\u001b[0m"
 
 ### Sources
-source ./sources/disks.sh
-source ./sources/displays.sh
-source ./sources/locale.sh
-source ./sources/memory.sh
-source ./sources/packages.sh
-source ./sources/quick_queries.sh
-source ./sources/uptime.sh
-source ./sources/window_manager.sh
+SHARE_DIR="/usr/share/betterfetch/sources"
+source "$SHARE_DIR/sources/disks.sh"
+source "$SHARE_DIR/sources/displays.sh"
+source "$SHARE_DIR/sources/locale.sh"
+source "$SHARE_DIR/sources/memory.sh"
+source "$SHARE_DIR/sources/packages.sh"
+source "$SHARE_DIR/sources/quick_queries.sh"
+source "$SHARE_DIR/sources/uptime.sh"
+source "$SHARE_DIR/sources/window_manager.sh"
 
 ### Logo
 arch_logo=(
